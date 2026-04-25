@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Design tokens — extracted from the Figma file so colors, spacing and
+   type scale stay consistent across components.
+   ========================================================================== */
+:root {
+	/* Palette */
+	--color-primary: #0b3d91; /* deep navy - headers, primary buttons */
+	--color-primary-dark: #092f6e;
+	--color-primary-hover: #0a3680;
+	--color-primary-light: #e6edf7; /* selected card background */
+	--color-primary-lightest: #f4f7fc;
+
+	--color-accent: #0066cc; /* links, focus ring */
+	--color-danger: #d1344a; /* required asterisk, errors */
+	--color-warning-bg: #fff6d1; /* "Not verified" pill */
+	--color-warning-text: #8a6a00;
+	--color-success: #0f9d58;
+
+	--color-text: #1f2937;
+	--color-text-muted: #6b7280;
+	--color-text-subtle: #9ca3af;
+
+	--color-border: #d1d5db;
+	--color-border-strong: #9ca3af;
+	--color-surface: #ffffff;
+	--color-surface-alt: #f3f4f6;
+	--color-page-bg: #f5f6f8;
+
+	/* Typography */
+	--font-family:
+		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+		Arial, sans-serif;
+	--fs-xs: 12px;
+	--fs-sm: 13px;
+	--fs-base: 14px;
+	--fs-md: 15px;
+	--fs-lg: 16px;
+	--fs-xl: 18px;
+	--fs-2xl: 22px;
+	--fs-3xl: 28px;
+
+	--fw-regular: 400;
+	--fw-medium: 500;
+	--fw-semibold: 600;
+	--fw-bold: 700;
+
+	/* Spacing scale (4px baseline) */
+	--sp-1: 4px;
+	--sp-2: 8px;
+	--sp-3: 12px;
+	--sp-4: 16px;
+	--sp-5: 20px;
+	--sp-6: 24px;
+	--sp-8: 32px;
+	--sp-10: 40px;
+	--sp-12: 48px;
+
+	/* Radii */
+	--radius-sm: 4px;
+	--radius-md: 6px;
+	--radius-lg: 10px;
+	--radius-pill: 999px;
+
+	/* Shadows */
+	--shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.05);
+	--shadow-md: 0 2px 6px rgba(17, 24, 39, 0.06);
+	--shadow-lg: 0 8px 24px rgba(17, 24, 39, 0.1);
+
+	/* Layout */
+	--content-max: 960px;
+	--transition-fast: 120ms ease-out;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+}
+
+body {
+	font-family: var(--font-family);
+	font-size: var(--fs-base);
+	color: var(--color-text);
+	background-color: var(--color-page-bg);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	line-height: 1.5;
+}
+
+button {
+	font-family: inherit;
+	cursor: pointer;
+}
+
+input,
+select,
+textarea,
+button {
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+p {
+	margin: 0;
+}
+
+/* Utility */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Focus ring */
+:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+	border-radius: var(--radius-sm);
+}
