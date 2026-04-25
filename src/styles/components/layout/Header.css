@@ -1,0 +1,54 @@
+.app-header {
+	width: 100%;
+	background-color: var(--color-primary);
+	color: #fff;
+}
+
+.app-header__inner {
+	max-width: 1600px;
+	margin: 0 auto;
+	padding: 16px 32px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--sp-4);
+}
+
+.app-header__brand {
+	font-size: var(--fs-lg);
+	font-weight: var(--fw-semibold);
+	letter-spacing: 0.3px;
+}
+
+.app-header__user {
+	display: flex;
+	align-items: center;
+	gap: var(--sp-3);
+}
+
+.app-header__avatar {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background-color: #fff;
+	color: var(--color-primary);
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-sm);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.app-header__name {
+	font-size: var(--fs-base);
+	font-weight: var(--fw-semibold);
+}
+
+@media (max-width: 640px) {
+	.app-header__inner {
+		padding: 12px 16px;
+	}
+	.app-header__name {
+		display: none;
+	}
+}

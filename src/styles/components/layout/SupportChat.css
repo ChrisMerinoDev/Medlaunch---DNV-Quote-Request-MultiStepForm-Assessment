@@ -1,0 +1,33 @@
+.support-chat {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 12px 20px;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-base);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  z-index: 100;
+}
+
+.support-chat:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .support-chat {
+    right: 16px;
+    bottom: 16px;
+    padding: 10px 16px;
+    font-size: var(--fs-sm);
+  }
+}

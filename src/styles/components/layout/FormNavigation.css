@@ -1,0 +1,31 @@
+.form-nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--sp-4);
+	margin-top: var(--sp-8);
+	padding-top: var(--sp-4);
+}
+
+.form-nav__left,
+.form-nav__right {
+	display: flex;
+	align-items: center;
+	gap: var(--sp-3);
+}
+
+@media (max-width: 640px) {
+	.form-nav {
+		flex-direction: column-reverse;
+		align-items: stretch;
+	}
+	.form-nav__left,
+	.form-nav__right {
+		width: 100%;
+		justify-content: space-between;
+	}
+	.form-nav__left .btn,
+	.form-nav__right .btn {
+		flex: 1;
+	}
+}
