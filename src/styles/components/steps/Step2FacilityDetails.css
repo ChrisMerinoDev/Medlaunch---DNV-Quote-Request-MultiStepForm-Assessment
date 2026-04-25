@@ -1,0 +1,20 @@
+.facility-types {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.facility-types__label {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+}
+
+.facility-types__required {
+  color: var(--color-danger);
+}
+
+.facility-types__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
