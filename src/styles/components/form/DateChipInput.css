@@ -1,0 +1,27 @@
+.date-chip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.date-chip__label {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.date-chip__row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sp-3);
+}
+
+.date-chip__input {
+  max-width: 260px;
+}
+
+.date-chip__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
