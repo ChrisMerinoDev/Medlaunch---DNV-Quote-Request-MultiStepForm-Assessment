@@ -75,7 +75,8 @@ const Section = ({ title, onEdit, children }) => {
 };
 
 const Step6Review = ({ registerValidator }) => {
-	const { data, goToStep, updateSection } = useFormContext();
+	const { data, errors, goToStep, updateSection } = useFormContext();
+	const stepErrors = errors[6] || {};
 
 	useEffect(() => {
 		registerValidator?.(() => {
@@ -360,6 +361,11 @@ const Step6Review = ({ registerValidator }) => {
 						checked={data.reviewAndSubmit.certified}
 						onChange={handleCertify}
 					/>
+					{stepErrors.certified && (
+						<span className="step__error" role="alert">
+							{stepErrors.certified}
+						</span>
+					)}
 					<p className="review__submit-note">
 						By submitting this form, you agree to our terms and conditions. DNV
 						will review your application and contact you within 2-3 business

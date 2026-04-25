@@ -34,8 +34,15 @@ const emptySite = () => ({
 });
 
 const Step4SiteInformation = ({ registerValidator }) => {
-	const { data, updateSection } = useFormContext();
+	const { data, errors, updateSection } = useFormContext();
 	const section = data.siteInformation;
+	const stepErrors = errors[4] || {};
+	const singleSiteErrors = {
+		street: stepErrors.street,
+		city: stepErrors.city,
+		state: stepErrors.state,
+		zip: stepErrors.zip,
+	};
 
 	useEffect(() => {
 		registerValidator?.(() => {
@@ -180,6 +187,11 @@ const Step4SiteInformation = ({ registerValidator }) => {
 						onClick={() => setLocationType("multiple")}
 					/>
 				</div>
+				{stepErrors.locationType && (
+					<span className="step__error" role="alert">
+						{stepErrors.locationType}
+					</span>
+				)}
 
 				{/* Single location inline form */}
 				{section.locationType === "single" && (
@@ -188,6 +200,7 @@ const Step4SiteInformation = ({ registerValidator }) => {
 						<AddressFields
 							title=""
 							values={section.singleSite}
+							errors={singleSiteErrors}
 							onChange={updateSingleSite}
 							required
 						/>
@@ -282,14 +295,26 @@ const Step4SiteInformation = ({ registerValidator }) => {
 								</span>
 							</button>
 						</div>
+						{stepErrors.inputMethod && (
+							<span className="step__error" role="alert">
+								{stepErrors.inputMethod}
+							</span>
+						)}
 
 						{section.inputMethod === "upload" && (
-							<FileUpload
-								uploadedFile={section.uploadedFile}
-								onFileSelect={handleFileSelect}
-								onRemoveFile={handleRemoveFile}
-								onDownloadTemplate={handleDownloadTemplate}
-							/>
+							<>
+								<FileUpload
+									uploadedFile={section.uploadedFile}
+									onFileSelect={handleFileSelect}
+									onRemoveFile={handleRemoveFile}
+									onDownloadTemplate={handleDownloadTemplate}
+								/>
+								{stepErrors.uploadedFile && (
+									<span className="step__error" role="alert">
+										{stepErrors.uploadedFile}
+									</span>
+								)}
+							</>
 						)}
 
 						{section.inputMethod === "manual" && (

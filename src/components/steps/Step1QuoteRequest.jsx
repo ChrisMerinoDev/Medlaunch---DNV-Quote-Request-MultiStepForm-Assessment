@@ -10,9 +10,10 @@ import { formatPhoneNumber } from "../../utils/formatters";
 import "../../styles/components/steps/Step.css";
 
 const Step1QuoteRequest = ({ registerValidator }) => {
-	const { data, updateSection, updateNested } = useFormContext();
+	const { data, errors, updateSection, updateNested } = useFormContext();
 	const section = data.quoteRequest;
 	const primary = section.primaryContact;
+	const stepErrors = errors[1] || {};
 
 	// --- Validation registered with the page-level submit handler -------------
 	useEffect(() => {
@@ -71,6 +72,7 @@ const Step1QuoteRequest = ({ registerValidator }) => {
 					value={section.legalEntityName}
 					onChange={handleEntityChange("legalEntityName")}
 					required
+					error={stepErrors.legalEntityName}
 				/>
 				<Input
 					label="Doing Business As (d/b/a) Name"
@@ -79,6 +81,7 @@ const Step1QuoteRequest = ({ registerValidator }) => {
 					onChange={handleEntityChange("dbaName")}
 					required
 					disabled={section.sameAsLegalEntity}
+					error={stepErrors.dbaName}
 				/>
 				<Checkbox
 					name="sameAsLegalEntity"
@@ -99,6 +102,7 @@ const Step1QuoteRequest = ({ registerValidator }) => {
 						value={primary.firstName}
 						onChange={handleContactChange("firstName")}
 						required
+						error={stepErrors.firstName}
 					/>
 					<Input
 						label="Last Name"
@@ -106,6 +110,7 @@ const Step1QuoteRequest = ({ registerValidator }) => {
 						value={primary.lastName}
 						onChange={handleContactChange("lastName")}
 						required
+						error={stepErrors.lastName}
 					/>
 				</div>
 
@@ -115,6 +120,7 @@ const Step1QuoteRequest = ({ registerValidator }) => {
 					value={primary.title}
 					onChange={handleContactChange("title")}
 					required
+					error={stepErrors.title}
 				/>
 
 				<div className="step__grid step__grid--2">
@@ -125,6 +131,7 @@ const Step1QuoteRequest = ({ registerValidator }) => {
 						onChange={handleContactChange("workPhone")}
 						placeholder="(555) 000-0000"
 						required
+						error={stepErrors.workPhone}
 					/>
 					<Input
 						label="Cell Phone"
@@ -142,6 +149,7 @@ const Step1QuoteRequest = ({ registerValidator }) => {
 					value={primary.email}
 					onChange={handleContactChange("email")}
 					required
+					error={stepErrors.email}
 					rightAdornment={
 						<span aria-hidden="true" className="step__refresh-icon">
 							<svg width="14" height="14" viewBox="0 0 24 24" fill="none">

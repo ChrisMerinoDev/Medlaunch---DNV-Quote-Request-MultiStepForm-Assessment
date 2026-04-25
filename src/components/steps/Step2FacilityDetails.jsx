@@ -9,8 +9,9 @@ import "../../styles/components/steps/Step.css";
 import "../../styles/components/steps/Step2FacilityDetails.css";
 
 const Step2FacilityDetails = ({ registerValidator }) => {
-	const { data, updateSection } = useFormContext();
+	const { data, errors, updateSection } = useFormContext();
 	const section = data.facilityDetails;
+	const stepErrors = errors[2] || {};
 
 	useEffect(() => {
 		registerValidator?.(() => {
@@ -51,6 +52,11 @@ const Step2FacilityDetails = ({ registerValidator }) => {
 							/>
 						))}
 					</div>
+					{stepErrors.facilityType && (
+						<span className="step__error" role="alert">
+							{stepErrors.facilityType}
+						</span>
+					)}
 
 					{section.facilityType === "other" && (
 						<Input
@@ -63,6 +69,7 @@ const Step2FacilityDetails = ({ registerValidator }) => {
 								})
 							}
 							required
+							error={stepErrors.otherFacilityType}
 						/>
 					)}
 				</div>

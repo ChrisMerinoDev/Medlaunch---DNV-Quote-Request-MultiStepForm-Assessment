@@ -16,8 +16,9 @@ import "../../styles/components/steps/Step.css";
 import "../../styles/components/steps/Step5Services.css";
 
 const Step5Services = ({ registerValidator }) => {
-	const { data, updateSection } = useFormContext();
+	const { data, errors, updateSection } = useFormContext();
 	const section = data.servicesAndCertifications;
+	const stepErrors = errors[5] || {};
 
 	const [activeTab, setActiveTab] = useState("all");
 	const [searchTerm, setSearchTerm] = useState("");
@@ -173,6 +174,11 @@ const Step5Services = ({ registerValidator }) => {
 						<div className="step__empty">No services match your search</div>
 					)}
 				</div>
+				{stepErrors.selectedServices && (
+					<span className="step__error" role="alert">
+						{stepErrors.selectedServices}
+					</span>
+				)}
 
 				<Button variant="ghost" onClick={addOtherService}>
 					+ Add Other Service
@@ -264,6 +270,11 @@ const Step5Services = ({ registerValidator }) => {
 						))}
 					</div>
 				)}
+				{stepErrors.standards && (
+					<span className="step__error" role="alert">
+						{stepErrors.standards}
+					</span>
+				)}
 
 				<div className="step__grid step__grid--2">
 					<Input
@@ -287,6 +298,7 @@ const Step5Services = ({ registerValidator }) => {
 								applicationDate: e.target.value,
 							})
 						}
+						error={stepErrors.applicationDate}
 					/>
 				</div>
 

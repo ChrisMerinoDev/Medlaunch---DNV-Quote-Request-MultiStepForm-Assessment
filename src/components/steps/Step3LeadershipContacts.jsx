@@ -25,9 +25,31 @@ const primaryContactSnapshot = (primary) => {
 };
 
 const Step3LeadershipContacts = ({ registerValidator }) => {
-	const { data, updateNested } = useFormContext();
+	const { data, errors, updateNested } = useFormContext();
 	const section = data.leadershipContacts;
 	const primary = data.quoteRequest.primaryContact;
+	const stepErrors = errors[3] || {};
+
+	// Map flat validator errors back to per-contact field shape so each
+	// ContactSubsection can show errors against its own fields.
+	const ceoErrors = {
+		firstName: stepErrors.ceoFirstName,
+		lastName: stepErrors.ceoLastName,
+		phone: stepErrors.ceoPhone,
+		email: stepErrors.ceoEmail,
+	};
+	const invoicingErrors = {
+		firstName: stepErrors.invFirstName,
+		lastName: stepErrors.invLastName,
+		phone: stepErrors.invPhone,
+		email: stepErrors.invEmail,
+	};
+	const billingErrors = {
+		street: stepErrors.street,
+		city: stepErrors.city,
+		state: stepErrors.state,
+		zip: stepErrors.zip,
+	};
 
 	useEffect(() => {
 		registerValidator?.(() => {
@@ -97,6 +119,7 @@ const Step3LeadershipContacts = ({ registerValidator }) => {
 				<ContactSubsection
 					title="Chief Executive Officer (CEO)"
 					values={section.ceo}
+					errors={ceoErrors}
 					onChange={handleContactField("ceo")}
 					onSameAsPrimaryToggle={handleSameAsPrimary("ceo")}
 					required
@@ -112,6 +135,7 @@ const Step3LeadershipContacts = ({ registerValidator }) => {
 				<ContactSubsection
 					title="Invoicing Contact"
 					values={section.invoicingContact}
+					errors={invoicingErrors}
 					onChange={handleContactField("invoicingContact")}
 					onSameAsPrimaryToggle={handleSameAsPrimary("invoicingContact")}
 					required
@@ -120,6 +144,7 @@ const Step3LeadershipContacts = ({ registerValidator }) => {
 				<AddressFields
 					title="Billing Address"
 					values={section.invoicingContact.billingAddress}
+					errors={billingErrors}
 					onChange={handleBillingChange}
 					required
 				/>

@@ -77,6 +77,14 @@
   border-radius: var(--radius-md);
 }
 
+.step__error {
+  display: block;
+  color: var(--color-danger);
+  font-size: var(--fs-xs);
+  margin-top: var(--sp-2);
+  font-weight: var(--fw-medium);
+}
+
 @media (max-width: 640px) {
   .step__grid--2,
   .step__grid--3 {
