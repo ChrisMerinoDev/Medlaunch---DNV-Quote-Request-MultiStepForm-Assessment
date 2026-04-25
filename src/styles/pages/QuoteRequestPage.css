@@ -1,0 +1,55 @@
+.quote-page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--color-page-bg);
+}
+
+.quote-page__main {
+	flex: 1;
+	padding: var(--sp-10) var(--sp-6) var(--sp-12);
+}
+
+.quote-page__container {
+	max-width: var(--content-max);
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-5);
+}
+
+.quote-page__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: var(--sp-4);
+}
+
+.quote-page__title {
+	font-size: var(--fs-3xl);
+	font-weight: var(--fw-semibold);
+	color: var(--color-text);
+}
+
+.quote-page__step-count {
+	font-size: var(--fs-sm);
+	color: var(--color-text-muted);
+}
+
+.quote-page__content {
+	margin-top: var(--sp-4);
+}
+
+@media (max-width: 640px) {
+	.quote-page__main {
+		padding: var(--sp-5) var(--sp-4) var(--sp-8);
+	}
+	.quote-page__title {
+		font-size: var(--fs-2xl);
+	}
+	.quote-page__header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--sp-2);
+	}
+}
