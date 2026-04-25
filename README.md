@@ -128,6 +128,12 @@ payload to the console as required:
 Step 6 also includes **Download as PDF** and **Export to CSV** actions that
 generate a downloadable file with the captured payload.
 
+### Deployment
+
+Deployed to Vercel. The `vercel.json` rewrite serves `index.html` for all
+routes so React Router can handle client-side navigation — without it,
+direct visits to `/quote-request` or page refreshes would return a 404.
+
 ## Assumptions Made
 
 - The "Send Verification Email" flow simulates verification by flipping a
